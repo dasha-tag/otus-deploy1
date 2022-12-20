@@ -22,6 +22,20 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', "css-loader"],
             },
+            {
+                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource',
+                generator:  {
+                    filename: 'images/[name]-[hash][ext]',
+                }
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: 'asset/resource',
+                generator:  {
+                    filename: 'fonts/[name]-[hash][ext]',
+                }
+            }
         ]
     },
     devServer: {
