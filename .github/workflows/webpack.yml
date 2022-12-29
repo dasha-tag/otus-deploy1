@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Install and Build
       run: |
         npm install
         npm run build-dev
@@ -30,4 +30,4 @@ jobs:
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with: 
-        folder: public
+        folder: dist
