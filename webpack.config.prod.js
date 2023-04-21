@@ -8,7 +8,7 @@ module.exports = {
         main: path.resolve(__dirname, './src/index.js'),
     },
     output: {
-        path: path.resolve(__dirname, './prod'),
+        path: path.resolve(__dirname, './dist'),
         filename: '[name].[hash:8].js',
         clean: true,
     },
