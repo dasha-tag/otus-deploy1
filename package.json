@@ -1,7 +1,9 @@
 {
   "main": "webpack.config.js",
   "scripts": {
-    "build-dev": "webpack --mode development",
+    "build-dev": "webpack -c webpack.config.js",
+    "build-prod": "webpack -c webpack.config.prod.js",
+    "start-dev": "webpack serve",
     "start": "webpack serve --mode development -c webpack.config.js"
   },
   "devDependencies": {

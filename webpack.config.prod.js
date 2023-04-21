@@ -1,13 +1,14 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCss = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: path.resolve(__dirname, './src/index.js'),
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './prod'),
         filename: '[name].[hash:8].js',
         clean: true,
     },
@@ -16,12 +17,15 @@ module.exports = {
             template: path.resolve(__dirname, './src/index.html'), // шаблон
             filename: 'index.html', // название выходного файла
         }),
+        new MiniCss({
+            filename: "style.css",
+          })
     ],
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ['style-loader', "css-loader"],
+                test: /\.(c|sa|sc)ss$/i,
+                use: [MiniCss.loader, "css-loader", "sass-loader"],
             },
             {
                 test: /\.html$/,
@@ -49,11 +53,5 @@ module.exports = {
                 }
             }
         ]
-    },
-    devServer: {
-        compress: false,
-        open: true,
-        port: 3000,
-        hot: true,
     }
 }
